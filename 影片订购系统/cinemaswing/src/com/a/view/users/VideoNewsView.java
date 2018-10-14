@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class VideoNewsView extends JInternalFrame {
@@ -83,13 +84,16 @@ public class VideoNewsView extends JInternalFrame {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//购票按钮事件
-				
 				int rowIndex = table.getSelectedRow();
-				String sessionId = (String) table.getValueAt(rowIndex, 0);
+				if (rowIndex > -1) {
+					String sessionId = (String) table.getValueAt(rowIndex, 0);
 				
-				ShoppingTicketView stv = new ShoppingTicketView(sessionId);
-				stv.setModal(true); //模态化窗口
-				stv.setVisible(true);
+					ShoppingTicketView stv = new ShoppingTicketView(sessionId);
+					stv.setModal(true); //模态化窗口
+					stv.setVisible(true);
+				} else {
+					JOptionPane.showMessageDialog(null, "请选择电影信息所在行！");
+				}
 			}
 		});
 		button.setBounds(420, 81, 123, 29);

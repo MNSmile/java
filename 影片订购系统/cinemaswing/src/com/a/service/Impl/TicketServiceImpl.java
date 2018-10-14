@@ -62,5 +62,13 @@ public class TicketServiceImpl implements TicketService {
 		List<Map<String,Object>> queryForList = bd.queryForList(sql);
 		return queryForList;
 	}
+	@Override
+	public Integer findUserIdByTicketId(String ticketId) {
+		bd = new BaseDaoImpl();
+		String sql = "SELECT t.USERID FROM TICKET t";
+		sql += " WHERE t.ticketid = '"+ticketId+"'";
+		List<Map<String,Object>> queryForList = bd.queryForList(sql);
+		return Integer.parseInt(queryForList.get(0).get("USERID").toString());
+	}
 	
 }

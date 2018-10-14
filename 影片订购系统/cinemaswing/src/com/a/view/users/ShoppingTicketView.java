@@ -62,7 +62,7 @@ public class ShoppingTicketView extends JDialog {
 		String Hallcapacity = hs.findHallCapacityById(hallId);
 		
 		int n = new Integer(Hallcapacity);
-		System.out.println("影厅容量："+n);
+		//System.out.println("影厅容量："+n);
 		int s = 1;
 		for (int y = 0; y < n/5; y++) {
 			for (int x = 0; x < 5; x++) {
@@ -148,7 +148,7 @@ public class ShoppingTicketView extends JDialog {
 				
 				//1.取到用户ID，sessionID，座位号
 				//IdSave.userId
-				System.out.println(ticketSet.toString());
+				//System.out.println(ticketSet.toString());
 				
 				TicketService ts = new TicketServiceImpl();
 				//2.判断余额是否支持现有票价*票个数

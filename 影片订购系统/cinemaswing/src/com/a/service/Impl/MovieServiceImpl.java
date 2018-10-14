@@ -17,7 +17,7 @@ public class MovieServiceImpl implements MovieService {
 		
 		String sql = "INSERT INTO MOVIE(MOVIEID,MOVIENAME,DETAIL,DURATION,MOVIETYPE)"; 
 		sql += " VALUES(SQL_MOVIE.nextval,'"+movie.getMovieName()+"','"+movie.getDetail()+"','"+movie.getDuration()+"','"+movie.getMovieType()+"')";
-		System.out.println(sql);
+		//System.out.println(sql);
 		
 		String [] generatedColumns = {"MOVIEID"};
 		

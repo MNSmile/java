@@ -43,5 +43,13 @@ public interface TicketService {
 	 * @return
 	 */
 	public List<Map<String,Object>> findTicketsBySessionid(Integer sessionid);
+	
+	/**
+	 * 由票ID找到用户ID
+	 * @param ticketId
+	 * @return 用户ID
+	 */
+	public Integer findUserIdByTicketId(String ticketId);
+	
 }
 	

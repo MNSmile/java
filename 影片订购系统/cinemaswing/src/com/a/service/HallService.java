@@ -15,7 +15,12 @@ public interface HallService {
 	 */
 	public int AddHallByCinemaId(Hall hall);
 	
-	
+	/**
+	 * 查询是否存在hallName的影厅
+	 * @param hallName
+	 * @return 
+	 */
+	public int findHallByCinemalId(String hallName);
 	/**
 	 * 查找所有影厅信息
 	 * @return

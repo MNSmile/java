@@ -164,7 +164,9 @@ public class ShowCinemaView extends JInternalFrame {
 						int i = cs.deleteCinema(cinemaId);
 						String message = i>0?"成功删除影院！":"删除失败请联系系统管理员！";
 						JOptionPane.showMessageDialog(null, message);
-						
+						//刷新表数据
+						Cinema c = new Cinema();
+						initTable(c);
 					} else {
 						//2.2 如果有影厅则返回一个窗口并说明先删除影厅
 						System.out.println("no");
@@ -202,6 +204,28 @@ public class ShowCinemaView extends JInternalFrame {
 		});
 		button_3.setBounds(356, 349, 123, 29);
 		getContentPane().add(button_3);
+		
+		JButton button_4 = new JButton("\u5C55\u793A\u5F71\u5385");
+		button_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//展示影厅按钮事件
+				
+				//1.找到对应行影院ID
+				int rowIndex = table.getSelectedRow();
+				if (rowIndex > -1) {
+					Integer cinemaId = new Integer(table.getValueAt(rowIndex, 0).toString());
+					
+					//2.调用展示影厅窗口
+					ShowHallView dhv = new ShowHallView(cinemaId);
+					
+					dhv.setVisible(true);
+				} else {
+					JOptionPane.showMessageDialog(null, "请选择影院所在行！");
+				}
+			}
+		});
+		button_4.setBounds(196, 349, 123, 29);
+		getContentPane().add(button_4);
 		
 		Cinema c = new Cinema();
 		initTable(c);

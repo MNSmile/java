@@ -73,7 +73,7 @@ public class RechargeView extends JDialog {
 				Double newBalance = oldBalance + rechargeBalance;
 				
 				cinemausers.setBalance(newBalance);
-				System.out.println("yes,there is RechargeView!");
+				//System.out.println("yes,there is RechargeView!");
 				//×ªµ½Service²ã
 				CinemaUsersService cus = new CinemaUsersServiceImpl();
 				int i = cus.updateUserInfoById(cinemausers);

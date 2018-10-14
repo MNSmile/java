@@ -48,6 +48,7 @@ public interface SessionService {
 	/**
 	 * 更新某一场次余座
 	 * @param sessionid
+	 * @param seatSum -1 代表余座加一，1代表余座减一
 	 * @return 影响行数
 	 */
 	public int updateSeatRemainBySessionId(String sessionid, int seatSum);
@@ -56,12 +57,18 @@ public interface SessionService {
 	/**
 	 * 通过场次id,得到某人购票的电影名、影院、影厅、座位号、放映时间、时长、单价(查到的都是放映时间大于系统时间)
 	 * @param sessionid 场次ID
-	 * @param status 状态
+	 * @param status 票的状态，0代表废票，1代表可以使用的票
 	 * @param uid 用户id
 	 * @return 
 	 */
 	public Vector<Vector<String>> findMovieRelatedInformationBySessionid(String sessionid, String status, Integer uid);
-
+	
+	/**
+	 * 通过场次ID查找本场次所有信息
+	 * @param sessionId 场次ID
+	 * @return 包含场次所有信息的Map集合
+	 */
+	public Map<String,Object> findSessionInformationBysessionId(String sessionId);
 }
 
 

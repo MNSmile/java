@@ -79,17 +79,23 @@ public class AddHallView extends JDialog {
 					
 					if (!"".equals(hallName) && !"".equals(capacity)) {
 						if (capacity.matches("[0-9]*")) {
-							//将数据封装在Hall类对象中
+							//1.将数据封装在Hall类对象中
 							Hall hall = new Hall();
 							hall.setCid(cinemaId);
 							hall.setHallname(hallName);
 							hall.setCapacity(capacity);
-							
-							//将封装数据传给service 
+							//判断影厅名字是否重复
 							HallService hs = new HallServiceImpl();
-							int i = hs.AddHallByCinemaId(hall);
-							String message = i>0?"添加影厅成功！":"添加失败请联系系统管理员！";
-							JOptionPane.showMessageDialog(null, message);
+							int k = hs.findHallByCinemalId(hallName);
+							if (k <= 0) {
+								//2.将封装数据传给service 
+								int i = hs.AddHallByCinemaId(hall);
+								String message = i>0?"添加影厅成功！":"添加失败请联系系统管理员！";
+								JOptionPane.showMessageDialog(null, message);
+							} else {
+								String message = "影厅名字重复！";
+								JOptionPane.showMessageDialog(null,message);
+							}
 						} else {
 							JOptionPane.showMessageDialog(null, "影厅容量数据错误！");
 						}

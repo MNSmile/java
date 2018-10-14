@@ -179,6 +179,8 @@ public class DeleteHallView extends JFrame {
 									int t = hs.deleteHallById(hallId);
 									String message = t>0?"成功删除影厅！":"删除失败请联系系统管理员！";
 									JOptionPane.showMessageDialog(null, message);
+									//刷新影厅
+									initTable();
 								}
 							}
 						}
@@ -188,6 +190,8 @@ public class DeleteHallView extends JFrame {
 						int t = hs.deleteHallById(hallId);
 						String message = t>0?"成功删除影厅！":"删除失败请联系系统管理员！";
 						JOptionPane.showMessageDialog(null, message);
+						//刷新影厅
+						initTable();
 					}
 				} else {
 					JOptionPane.showMessageDialog(null, "请选择影厅所在行！");

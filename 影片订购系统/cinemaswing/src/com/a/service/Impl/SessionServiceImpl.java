@@ -30,7 +30,7 @@ public class SessionServiceImpl implements SessionService {
 		sql += " VALUES(SEQ_SESSIONS.nextval,"+s.getHid()+","+s.getCid()+","+s.getMovieId()+",";
 		sql += "TO_DATE('"+ s.getSessionTime()+"','yyyy-mm-dd hh24:mi:ss')"+",'"+s.getPrice()+"','"+s.getRemain()+"')";
 		
-		System.out.println(sql);
+		//System.out.println(sql);
 		int i = bd.executeUpdate(sql);
 		return i;
 	}
@@ -44,9 +44,9 @@ public class SessionServiceImpl implements SessionService {
 		sql += " INNER JOIN HALL h ON h.HALLID = s.HID";
 		sql += " WHERE h.HALLSTATUS = 1";
 		sql += " AND s.HID="+ hid +" AND s.CID="+cid+")";
-		System.out.println(sql);
+		//System.out.println(sql);
 		List<Map<String,Object>> queryForList = bd.queryForList(sql);
-		System.out.println(queryForList);
+		//System.out.println(queryForList);
 		if (queryForList!=null && !queryForList.isEmpty()) {
 			return queryForList.get(0);
 		}
@@ -116,7 +116,7 @@ public class SessionServiceImpl implements SessionService {
 		for (Map<String, Object> map : queryForList) {
 			seatSet.add((String) map.get("SEAT"));
 		}
-		System.out.println(seatSet.toString());
+		//System.out.println(seatSet.toString());
 		return seatSet;
 	}
 	
@@ -145,7 +145,6 @@ public class SessionServiceImpl implements SessionService {
 		sql += " WHERE c.CINEMESTATUS = 1 AND h.HALLSTATUS = 1 AND t.STATUS = " + status;
 		sql += " AND cu.USERID = " + uid; 
 		sql += " AND s.SESSIONSID = " + sessionid;
-		System.out.println(sql);
 		
 		List<Map<String,Object>> queryForList = bd.queryForList(sql);
 		
@@ -167,5 +166,14 @@ public class SessionServiceImpl implements SessionService {
 			data.add(rowData);
 		}
 		return data ;
+	}
+	@Override
+	public Map<String, Object> findSessionInformationBysessionId(String sessionId) {
+		bd = new BaseDaoImpl();
+		
+		String sql = "select * from SESSIONS t WHERE t.SESSIONSID = '"+sessionId+"'";
+		
+		List<Map<String,Object>> queryForList = bd.queryForList(sql);
+		return queryForList.get(0);
 	}
 }

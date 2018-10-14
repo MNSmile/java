@@ -17,7 +17,7 @@ public class HallServiceImpl implements HallService {
 		String sql = "insert into HALL(HALLID,HALLNAME,CID,CAPACITY,HALLSTATUS)";
 		sql += " values(SEQ_HALL.nextval,'"+hall.getHallname()+"',"+hall.getCid()+",'"+hall.getCapacity()+"','1')";
 		
-		System.out.println(sql);
+		//System.out.println(sql);
 		
 		int i = bd.executeUpdate(sql);
 		return i;
@@ -88,6 +88,16 @@ public class HallServiceImpl implements HallService {
 		sql += "WHERE h.hallid = " + hallid;
 		
 		int i = bd.executeUpdate(sql);
+		return i;
+	}
+
+	@Override
+	public int findHallByCinemalId(String hallName) {
+		bd = new BaseDaoImpl();
+		String sql = "SELECT * FROM HALL h WHERE h.hallname = '"+hallName+"'";
+		//System.out.println("HallServiceImpl:\n"+sql);
+		int i = bd.executeUpdate(sql);
+		//System.out.println("HallServiceImpl:\n"+"i="+i);
 		return i;
 	}
 	

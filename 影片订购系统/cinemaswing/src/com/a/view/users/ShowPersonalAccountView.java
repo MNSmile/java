@@ -134,9 +134,9 @@ public class ShowPersonalAccountView extends JInternalFrame {
 					cu.setUserid(IdSave.userId);
 					cu.setBalance(balance);
 					
-					System.out.println("ShowPersonalAccount£º"+ "yes!");
+					//System.out.println("ShowPersonalAccount£º"+ "yes!");
 					RechargeView rv = new RechargeView(cu);
-					System.out.println("ShowPersonalAccount£º"+ "no!");
+					//System.out.println("ShowPersonalAccount£º"+ "no!");
 					rv.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					rv.setModal(true);
 					rv.setVisible(true);
