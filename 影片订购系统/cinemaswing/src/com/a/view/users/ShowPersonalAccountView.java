@@ -27,7 +27,7 @@ public class ShowPersonalAccountView extends JInternalFrame {
 	private JTextField textField;
 	
 	
-	private void initTxt() {
+	public void initTxt() {
 		CinemaUsersService cus = new CinemaUsersServiceImpl();
 		List<Map<String,Object>> findUserById = cus.findUserById(IdSave.userId);
 		String userName = findUserById.get(0).get("NAME").toString();
@@ -134,12 +134,14 @@ public class ShowPersonalAccountView extends JInternalFrame {
 					cu.setUserid(IdSave.userId);
 					cu.setBalance(balance);
 					
-					//System.out.println("ShowPersonalAccount£º"+ "yes!");
+					
 					RechargeView rv = new RechargeView(cu);
-					//System.out.println("ShowPersonalAccount£º"+ "no!");
+					
 					rv.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					rv.setModal(true);
 					rv.setVisible(true);
+					
+					
 				}
 			}
 		});
@@ -168,6 +170,8 @@ public class ShowPersonalAccountView extends JInternalFrame {
 					uup.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					uup.setModal(true);
 					uup.setVisible(true);
+					
+					
 				}
 			}
 		});

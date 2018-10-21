@@ -61,7 +61,8 @@ public class ShowHallView extends JFrame {
 	 * Create the frame.
 	 */
 	public ShowHallView(Integer cinemaId) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//关闭此窗口，不影响主窗口
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(800, 500, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

@@ -109,7 +109,7 @@ public class CinemaUsersServiceImpl implements CinemaUsersService {
 			sql += " ,STATUS = '"+cinemausers.getStatus()+"'";
 		sql += " where USERID = " + cinemausers.getUserid();
 		
-		System.out.println("CinemaUsersServiceImpl:\n"+sql);
+		//System.out.println("CinemaUsersServiceImpl:\n"+sql);
 		
 		int i = bd.executeUpdate(sql);
 		return i;
