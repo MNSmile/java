@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生信息展示</title>
+    <link type="text/css" rel="stylesheet" href="css/sms.css" />
+    <link type="text/css" rel="stylesheet" href="css/semantic.css" />
+    <link type="text/css" rel="stylesheet" href="css/alertify.css" />
+    <script src="scripts/jquery.js" type="text/javascript"></script>
+    <script src="scripts/alertify.js" type="text/javascript"></script>
+    <script>
+        $(function () {
+            $.post("stu.do",{"param":"queryAll"},function (data) {
+                for (var i=0; i<data.length;i++){
+                    var $tr = $("<tr></tr>"); //创建一个tr标签
+                    var $td1 = $("<td>"+data[i].id+"</td>");
+                    var $td2 = $("<td>"+data[i].name+"</td>");
+                    var $td3 = $("<td>"+data[i].age+"</td>");
+                    var $td4 = $("<td>"+data[i].sex+"</td>");
+                    var $td5 = $("<td>"+data[i].score+"</td>");
+                    var $td6 = $("<td><a href='javascript:del("+data[i].id+")'>删除</a></td>");
+                    $tr.append($td1).append($td2).append($td3).append($td4).append($td5).append($td6);
+                    $("table > tbody").append($tr);
+                }
+            },"json")
+        });
+        function del(id) {
+            alertify.confirm("是否確定刪除?",
+                function () {
+                    $.get("stu.do",{"param":"del","id":id},function (data) {
+                        if(data.info=="success"){
+                            window.location = "index.html";
+                        }
+                    })
+                })
+        }
+    </script>
+</head>
+<body>
+    <table border="1px" cellspacing="0" cellpadding="0" width="500">
+        <thead>
+            <tr align="center">
+                <td>编号</td>
+                <td>姓名</td>
+                <td>年龄</td>
+                <td>性别</td>
+                <td>分数</td>
+                <td>操作</td>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</body>
+</html>
