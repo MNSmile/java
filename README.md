@@ -5,7 +5,7 @@
 （2） 简单的展示学生的编号、姓名、年龄、性别、分数  
     附加删除功能  
 （3）c3p0-config.xml配置文件为数据库的配置，运行前查看是否和自己的数据库配置匹配
-##### 2.2 [maven_message]
+##### 2.2 [maven_message](https://github.com/MNSmile/java/tree/master/maven/maven_message)
 （1）使用 ajax、jsp、servlet、druid连接池、servlet、fastjson、jstl、el表达式技术   
-（2）实现用户之间的短信聊天。
+（2）实现用户之间的短信聊天  
 （3）druid.properties配置文件为数据库的配置，运行前查看是否和自己的数据库配置匹配
