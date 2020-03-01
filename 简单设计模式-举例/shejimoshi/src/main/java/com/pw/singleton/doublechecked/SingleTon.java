@@ -14,7 +14,9 @@ public class SingleTon {
         if (singleTon == null) {
             //第二次检测
             synchronized(SingleTon.class) {
-               singleTon = new SingleTon();
+                if(singleTon == null) {
+                    singleTon = new SingleTon();
+                }
             }
         }
         return singleTon;
